@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+  <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>inspector</title>
+</head>
+
+<html>
+
+<body>
+  <div class="wrap">
+    <div class="tile info">
+      <div class="tile-top">
+      </div>
+      <div class="tile-content">
+        <p id="rocket-name">Rocket name サンプル</p>
+      </div>
+    </div>
+
+    <div class="tile system">
+      <div class="tile-top">
+        <label class="tile-title">
+          System
+        </label>
+      </div>
+      <div class="tile-content">
+        <ul class="systemstatuslist">
+          <li class="systemstatus systemstatus-red" id="status-transmitter">Transmitter</li>
+          <li class="systemstatus systemstatus-red" id="status-receiver">Receiver</li>
+          <li class="systemstatus systemstatus-red" id="status-telemetly">Telemetry</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tile viewer">
+      <div class="tile-top">
+        <label class="tile-title">
+          Rocket angle viewer
+        </label>
+      </div>
+      <div class="tile-content">
+        <div id="viewer-content">
+          <img id="rocketimg" src="./resource/rocket.png">
+        </div>
+      </div>
+    </div>
+
+    <div class="tile setting">
+      <div class="tile-top">
+        <label class="tile-title">
+          Setting
+        </label>
+        <button class="tile-top-button" id="port-update-button">
+          Update port
+        </button>
+      </div>
+      <div class="tile-content">
+        <div class="setting-row" id="setting-transmitter">
+          <label>Transmitter</label>
+          <div class="setting-content">
+            <select class="setting-selector" id="port-selector-transmitter">
+              <option>Select Port</option>
+            </select>
+          </div>
+        </div>
+        <div class="setting-row" id="setting-receiver">
+          <label>Receiver</label>
+          <div class="setting-content">
+            <select class="setting-selector" id="port-selector-receiver">
+              <option>Select Port</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tile cui">
+      <div class="tile-top">
+        <label class="tile-title">
+          Telemetry
+        </label>
+        <button class="tile-top-button" id="cui-clear-text-button">
+          Clear text
+        </button>
+      </div>
+      <div class="tile-content">
+        <div id="cui-text-area">
+        </div>
+        <div id="cui-input-area">
+          <div id="cui-input-arrow">
+            >
+          </div>
+          <div id="cui-inputfield">
+            <input id="cui-input" type="text" maxlength="4">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tile status">
+      <div class="tile-top">
+        <label class="tile-title">
+          Status
+        </label>
+      </div>
+      <div class="tile-content">
+        <div class="tile-inner-wrap">
+          <div class="smalltile status-sequence">
+            <div class="smalltile-top">
+              <label class="smalltile-title">
+                Sequence
+              </label>
+            </div>
+            <div class="smalltile-content">
+              <div class="smalltile-center-content">
+                <p class="status-value" id="sequence-value">None</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="smalltile status-time">
+            <div class="smalltile-top">
+              <label class="smalltile-title">
+                Time from boot
+              </label>
+            </div>
+            <div class="smalltile-content">
+              <div class="smalltile-center-content">
+                <p class="status-value" id="time-value">000.0000s</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="smalltile status-height">
+            <div class="smalltile-top">
+              <label class="smalltile-title">
+                Height
+              </label>
+            </div>
+            <div class="smalltile-content">
+              <div class="smalltile-center-content">
+                <p class="status-value" id="height-value">0000.00m</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="smalltile status-temperature">
+            <div class="smalltile-top">
+              <label class="smalltile-title">
+                Temperature
+              </label>
+            </div>
+            <div class="smalltile-content">
+              <div class="smalltile-center-content">
+                <p class="status-value" id="temperature-value">00.0000C</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="smalltile status-pressure">
+            <div class="smalltile-top">
+              <label class="smalltile-title">
+                Pressure
+              </label>
+            </div>
+            <div class="smalltile-content">
+              <div class="smalltile-center-content">
+                <p class="status-value" id="pressure-value">0000.0000Pa</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="smalltile status-accel">
+            <div class="smalltile-top">
+              <label class="smalltile-title">
+                Accel
+              </label>
+            </div>
+            <div class="smalltile-content">
+              <div class="smalltile-center-content">
+                <p class="status-value" id="accel-value">(00.00, 00.00, 00.00)G</p>
+                <p class="status-value" id="accel-abs-value">00.00G</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="smalltile status-gyro">
+            <div class="smalltile-top">
+              <label class="smalltile-title">
+                Gyro
+              </label>
+            </div>
+            <div class="smalltile-content">
+              <div class="smalltile-center-content">
+                <p class="status-value" id="gyro-value">(000.00, 000.00, 000.00)dps</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="smalltile status-gps">
+            <div class="smalltile-top">
+              <label class="smalltile-title">
+                GPS
+              </label>
+            </div>
+            <div class="smalltile-content">
+              <div class="smalltile-center-content">
+                <p class="status-value" id="longitude-value">000.000000E</p>
+                <p class="status-value" id="latitude-value">00.000000N</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./src/wireless-module.js"></script>
+
+</body>
+
+</html>

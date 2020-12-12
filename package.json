@@ -1,0 +1,40 @@
+{
+    "name": "inspector",
+    "version": "1.0.0",
+    "author": {
+        "name": "FROM THE EARTH"
+    },
+    "homepage": "https://github.com/FROM-THE-EARTH",
+    "license": "MIT",
+    "main": "root/main.js",
+    "scripts": {
+        "start": "electron .",
+        "rebuild": "electron-rebuild -f -w serialport"
+    },
+    "dependencies": {
+        "electron-store": "^6.0.1",
+        "jquery": "^3.5.1",
+        "serialport": "^9.0.2"
+    },
+    "devDependencies": {
+        "electron-builder": "^22.9.1",
+        "electron-rebuild": "^2.3.4",
+        "electron": "11.0.3"
+    },
+    "build": {
+        "productName": "inspector",
+        "directories": {
+            "output": "./release"
+        },
+        "mac": {
+            "icon": "./icon/icon.icns",
+            "target": "dmg",
+            "artifactName": "inspector.${ext}"
+        },
+        "win": {
+            "icon": "./icon/icon.ico",
+            "target": "msi",
+            "artifactName": "inspector.${ext}"
+        }
+    }
+}

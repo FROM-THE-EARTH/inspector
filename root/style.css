@@ -1,0 +1,373 @@
+body{
+    background-color: rgb(53, 53, 53);
+    margin: 0;
+}
+
+
+.wrap{
+    display: grid; 
+    grid-template-columns: repeat(20, 4.9vw);
+    grid-template-rows: repeat(20, 4.9vh);
+}
+
+
+.tile{
+    border: 2px solid rgb(197, 197, 197);
+    margin: 0.4vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.tile-top{
+    background-color: #7890e6;
+    margin:0;
+    padding: 0;
+}
+
+.tile-title{
+    font-size: 2.5vh;
+    padding-left: 1vh;
+    padding-right: 1vh;
+    background-color: rgb(201, 205, 255);
+}
+
+.tile-top-button{
+    font-size: 2.0vh;
+    background-color: unset;
+    border: none;
+    outline: none;
+    padding-left: 1vh;
+    padding-right: 1vh;
+    height: 100%;
+}
+
+.tile-top-button:hover{
+    background-color: #5b79e4;
+    transition: 0.5s;
+}
+
+.tile-top-button:active{
+    background-color: #3c61e7;
+    transition: 0s;
+}
+
+.tile-content{
+    background: linear-gradient(to bottom, rgb(201, 205, 255), #727ea8);
+    flex: 1;
+    position: relative;
+    height: 100%;
+}
+
+.tile-inner-wrap{
+    display: grid;
+    grid-auto-columns: auto;
+    grid-template-rows: auto;
+    height: 100%;
+}
+
+.smalltile{
+    background: linear-gradient(to bottom, rgb(201, 205, 255), #727ea8);
+    border: 2px solid rgb(53, 53, 53);
+    margin: 0.4vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.smalltile-top{
+    background-color: rgb(201, 205, 255);
+    margin:0;
+    padding: 0;
+    text-align: center;
+}
+
+.smalltile-title{
+    font-size: 2.0vh;
+    font-weight: bold;
+}
+
+.smalltile-content{
+    background: linear-gradient(to bottom, rgb(201, 205, 255), #727ea8);
+    flex: 1;
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 2.0vh;
+}
+
+
+.info{
+    grid-column-start: 1; 
+    grid-column-end: 22; 
+    grid-row-start: 1; 
+    grid-row-end: 2; 
+}
+
+.viewer{
+    grid-column-start: 1; 
+    grid-column-end: 6; 
+    grid-row-start: 2; 
+    grid-row-end: 13; 
+}
+
+.system{
+    grid-column-start: 6; 
+    grid-column-end: 12; 
+    grid-row-start: 2; 
+    grid-row-end: 5; 
+}
+
+.setting{
+    grid-column-start: 6; 
+    grid-column-end: 12; 
+    grid-row-start: 5; 
+    grid-row-end: 13;
+}
+
+.cui{
+    grid-column-start: 12; 
+    grid-column-end: 22; 
+    grid-row-start: 2; 
+    grid-row-end: 13;
+    min-width: 300px;
+}
+
+.status{
+    grid-column-start: 1; 
+    grid-column-end: 22; 
+    grid-row-start: 13; 
+    grid-row-end: 21;
+}
+
+
+#rocket-name{
+    font-size: 3.6vh;
+    font-family: '游ゴシック';
+    margin: 0;
+    line-height: 100%;
+    text-align: center;
+}
+
+
+#viewer-content{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#rocketimg{
+    transform: rotate(15deg);
+    height: 40vmin;
+}
+
+
+.setting-row{
+    height: 3vh;
+    display: block;
+    margin-top: 0.6vh;
+}
+
+.setting-row label{
+    display: block;
+    float: left;
+    width: 13vh;
+    line-height: 3vh;
+    font-size: 2.1vh;
+    font-family: '游ゴシック';
+    font-weight: bold;
+}
+
+.setting-row label::after{
+    content: ": ";
+}
+
+.setting-content{
+    line-height: 3vh;
+}
+
+.setting-selector{
+    line-height: 3vh;
+    font-size: 2.1vh;
+    font-family: '游ゴシック';
+    border: none;
+    outline: none;
+    background-color:unset;
+}
+
+.setting-button{
+    line-height: 3vh;
+    font-size: 2.1vh;
+    font-family: '游ゴシック';
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    background-color: unset;
+}
+
+.setting-button:hover{
+    background-color: #8a9ee7;
+    transition: 0.5s;
+}
+
+.setting-button:active{
+    background-color: #5071e7;
+}
+
+.setting-selector select{
+    outline: none;
+}
+
+.setting-selector:hover{
+    background-color: #8a9ee7;
+    transition: 0.5s;
+}
+
+
+#cui-text-area{
+    height: 92%;
+    width: 100%;
+    position: absolute;
+    bottom: 8%;
+    overflow-y: scroll;
+}
+
+#cui-input-area{
+    height: 8%;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    border-top: 1px solid black;
+}
+
+#cui-input-arrow{
+    font-size: 2.2vh;
+    font-family: '游ゴシック';
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+#cui-inputfield{
+    flex: 1;
+    position: relative;
+}
+
+#cui-input{
+    font-size: 2.2vh;
+    font-family: '游ゴシック';
+    position: absolute;
+    width: 100%;
+    background-color: unset;
+    border: none;
+	box-sizing: border-box;
+}
+
+#cui-input:focus {
+	outline: none;
+}
+
+#cui-input:focus:after {
+	outline: none;
+}
+
+.cui-text{
+    font-size: 1.8vh;
+    font-family: '游ゴシック';
+    margin:0;
+    padding: 0;
+    word-wrap: break-word;
+}
+
+
+.systemstatuslist{
+    list-style: none;
+    padding:0;
+    margin:0;
+    margin-top: 3px;
+    margin-left: 5px;
+}
+
+.systemstatus{
+    font-size: 1.7vh;
+    font-family: '游ゴシック';
+}
+
+.systemstatus-green:before{
+    content: "● ";
+    color: greenyellow;
+}
+
+.systemstatus-red:before{
+    content: "● ";
+    color: red;
+}
+
+
+.status-value{
+    font-size: 3.0vmin;
+    font-family: '游ゴシック';
+    padding:0;
+    margin:0;
+    text-align: center;
+}
+
+
+.status-sequence{
+    grid-column-start: 1; 
+    grid-column-end: 2; 
+    grid-row-start: 1; 
+    grid-row-end: 3;
+}
+
+.status-time{
+    grid-column-start: 2; 
+    grid-column-end: 3; 
+    grid-row-start: 1; 
+    grid-row-end: 2;
+}
+
+.status-height{
+    grid-column-start: 2; 
+    grid-column-end: 3; 
+    grid-row-start: 2; 
+    grid-row-end: 3;
+}
+
+.status-temperature{
+    grid-column-start: 3; 
+    grid-column-end: 4; 
+    grid-row-start: 1; 
+    grid-row-end: 2;
+}
+
+.status-pressure{
+    grid-column-start: 3; 
+    grid-column-end: 4; 
+    grid-row-start: 2; 
+    grid-row-end: 3;
+}
+
+.status-accel{
+    grid-column-start: 4; 
+    grid-column-end: 5; 
+    grid-row-start: 1; 
+    grid-row-end: 2;
+}
+
+.status-gyro{
+    grid-column-start: 4; 
+    grid-column-end: 5; 
+    grid-row-start: 2; 
+    grid-row-end: 3;
+}
+
+.status-gps{
+    grid-column-start: 5; 
+    grid-column-end: 6; 
+    grid-row-start: 1; 
+    grid-row-end: 3;
+}
