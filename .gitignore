@@ -4,5 +4,5 @@ node_modules/
 ## Installer
 win-unpacked/
 builder-effective-config.yaml
-inspector-installer.exe.blockmap
 latest.yml
+inspector-installer-win.exe.blockmap
