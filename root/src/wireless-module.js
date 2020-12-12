@@ -19,6 +19,7 @@ class Module {
     this.serialPort = null;
     this.selector_id = '#port-selector-' + name.toLowerCase();
     this.error = false;
+    this.connected = false;
   }
 }
 
@@ -63,6 +64,7 @@ function onSelectorChanged(module) {
       }else{
         module.serialPort.close();
       }
+      module.connected = false;
       useOneModule = false;
       cui.addText(cui.TextType.Info, module.name + '  disconnected');
       sysstat.changeStatus('status-' + module.name.toLowerCase(), sysstat.Type.Red);
@@ -83,18 +85,20 @@ function onSelectorChanged(module) {
       latest_selected_module = module;
       module.serialPort.read(1);
     }
-
+    
+    // error check
     setTimeout(function () {
       if (module.error === true) {
         return;
       }
 
-      cui.addText(cui.TextType.Info, module.name + ' connected');
-
+      // receiver
       if (module === receiver) {
         module.serialPort.addListener('data', onReceiveData);
       }
 
+      module.connected = true;
+      cui.addText(cui.TextType.Info, module.name + ' connected');
       sysstat.changeStatus('status-' + module.name.toLowerCase(), sysstat.Type.Green);
     }, 250);
   });
@@ -110,6 +114,22 @@ $(function () {
   $('#port-update-button').on('click', function () {
     updateSerialPorts(transmitter);
     updateSerialPorts(receiver);
+  });
+
+  $('#cui-input').on('keydown', function(e) {
+    if (e.which == 13) {
+      const text = $('#cui-input').val();
+      if(text ===''){
+        return;
+      }
+      if(transmitter.connected === false){
+        cui.addText(cui.TextType.Error, 'Transmitter is not connected');
+        return;
+      }
+      transmitter.serialPort.write(text);
+      cui.addText(cui.TextType.To, text);
+      $('#cui-input').val("");
+    }
   });
 });
 

@@ -34,12 +34,12 @@
         "mac": {
             "icon": "./icon/icon.icns",
             "target": "dmg",
-            "artifactName": "inspector-installer.${ext}"
+            "artifactName": "inspector-installer-mac.${ext}"
         },
         "win": {
             "icon": "./icon/icon.ico",
             "target": "nsis",
-            "artifactName": "inspector-installer.${ext}"
+            "artifactName": "inspector-installer-win.${ext}"
         }
     }
 }
