@@ -16,7 +16,7 @@ app.on('ready', () => {
     }
   });
 
-  //mainWindow.setMenu(null);
+  mainWindow.setMenu(null);
 
   mainWindow.loadURL('file://' + __dirname + '/index.html');
 
@@ -24,5 +24,5 @@ app.on('ready', () => {
     mainWindow = null;
   });
 
-  mainWindow.webContents.openDevTools();
+  //mainWindow.webContents.openDevTools();
 });

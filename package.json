@@ -1,6 +1,6 @@
 {
     "name": "inspector",
-    "version": "1.0.0",
+    "version": "0.1.0",
     "author": {
         "name": "FROM THE EARTH"
     },
@@ -9,7 +9,8 @@
     "main": "root/main.js",
     "scripts": {
         "start": "electron .",
-        "rebuild": "electron-rebuild -f -w serialport"
+        "rebuild": "electron-rebuild -f -w serialport",
+        "pac:win": "npx electron-builder --win --x64"
     },
     "dependencies": {
         "electron-store": "^6.0.1",
@@ -26,15 +27,19 @@
         "directories": {
             "output": "./release"
         },
+        "nsis": {
+            "oneClick": false,
+            "allowToChangeInstallationDirectory": true
+        },
         "mac": {
             "icon": "./icon/icon.icns",
             "target": "dmg",
-            "artifactName": "inspector.${ext}"
+            "artifactName": "inspector-installer.${ext}"
         },
         "win": {
             "icon": "./icon/icon.ico",
-            "target": "msi",
-            "artifactName": "inspector.${ext}"
+            "target": "nsis",
+            "artifactName": "inspector-installer.${ext}"
         }
     }
 }
