@@ -194,7 +194,7 @@ body{
     font-family: '游ゴシック';
     border: none;
     outline: none;
-    background-color:unset;
+    background-color: unset;
 }
 
 .setting-button{
@@ -218,6 +218,10 @@ body{
 
 .setting-selector select{
     outline: none;
+}
+
+.setting-selector:focus{
+    background-color: #8a9ee7;
 }
 
 .setting-selector:hover{

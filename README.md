@@ -5,10 +5,10 @@
 
 # Download Installer
   |Platform|Link|Version|Date|
-  |:----|:----|:----:|:----:|
+  |:----:|:----:|:----:|:----:|
   |Windows10|[Download](https://github.com/FROM-THE-EARTH/inspector/raw/main/release/inspector-installer-win.exe)|0.1.0|2020/12/12|
-  |macOS|[Download]()|None|None|
-  |Linux|[Download]()|None|None|
+  |macOS|N/A|N/A|N/A|
+  |Linux|N/A|N/A|N/A|
 
 # Develop
 ## Build

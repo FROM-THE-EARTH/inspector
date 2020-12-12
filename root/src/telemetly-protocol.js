@@ -1,9 +1,9 @@
 window.$ = window.jQuery = require('jquery');
 
-const CUI = require('../src/cui.js');
+const CUI = require('../src/cui');
 const cui = new CUI();
 
-const SystemStatus = require('../src/system-status.js');
+const SystemStatus = require('../src/system-status');
 const sysstat = new SystemStatus();
 
 class Sequence {

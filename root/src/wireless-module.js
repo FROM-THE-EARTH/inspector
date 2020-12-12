@@ -1,14 +1,16 @@
 window.$ = window.jQuery = require('jquery');
 
-const { prototype } = require('serialport');
 const SerialPort = require('serialport');
 
-var AnalyzeTelemetly = require('./src/telemetly-protocol.js');
+var AnalyzeTelemetly = require('./src/telemetly-protocol');
+
+const Setting = require('./src/setting');
+const setting = new Setting();
 
 const CUI = require('./src/cui.js');
 const cui = new CUI();
 
-const SystemStatus = require('./src/system-status.js');
+const SystemStatus = require('./src/system-status');
 const sysstat = new SystemStatus();
 
 
@@ -57,11 +59,11 @@ function onSelectorChanged(module) {
 
     // disconnect
     if (module.port === 'Select Port') {
-      if(useOneModule === true){
-        if(module === receiver){
+      if (useOneModule === true) {
+        if (module === receiver) {
           receiver.serialPort.removeListener('data', onReceiveData);
         }
-      }else{
+      } else {
         module.serialPort.close();
       }
       module.connected = false;
@@ -72,20 +74,20 @@ function onSelectorChanged(module) {
     }
 
     // connected
-    if(transmitter.port === receiver.port){
+    if (transmitter.port === receiver.port) {
       module.serialPort = module === transmitter ? receiver.serialPort : transmitter.serialPort;
       useOneModule = true;
       cui.addText(cui.TextType.Info, 'Using same module for transmitter & receiver');
-    }else{
+    } else {
       module.serialPort = new SerialPort(module.port, {
         baudRate: 9600,
         parser: SerialPort.parsers.Readline,
       });
-      
+
       latest_selected_module = module;
       module.serialPort.read(1);
     }
-    
+
     // error check
     setTimeout(function () {
       if (module.error === true) {
@@ -116,18 +118,19 @@ $(function () {
     updateSerialPorts(receiver);
   });
 
-  $('#cui-input').on('keydown', function(e) {
+  // send command
+  $('#cui-input').on('keydown', function (e) {
     if (e.which == 13) {
       const text = $('#cui-input').val();
-      if(text ===''){
+      if (text === '') {
         return;
       }
-      if(transmitter.connected === false){
+      if (transmitter.connected === false) {
         cui.addText(cui.TextType.Error, 'Transmitter is not connected');
         return;
       }
-      transmitter.serialPort.write(text);
-      cui.addText(cui.TextType.To, text);
+      transmitter.serialPort.write(setting.transmitterHeader.value + text);
+      cui.addText(cui.TextType.To, setting.transmitterHeader.value + text);
       $('#cui-input').val("");
     }
   });
