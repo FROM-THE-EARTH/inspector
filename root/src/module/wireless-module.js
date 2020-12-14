@@ -2,7 +2,7 @@ window.$ = window.jQuery = require('jquery');
 
 const SerialPort = require('serialport');
 
-const TeleProtocol = require('./telemetly-protocol');
+const TeleProtocol = require('./telemetry-protocol');
 const Setting = require('./setting');
 const CUI = require('./cui');
 const SystemStatus = require('./system-status');

@@ -82,11 +82,11 @@ function analyzeFormatZ(datas) {
     CUI.addText(CUI.TextType.Message, datas[0]);
 }
 
-var Telemetly = {
+var Telemetry = {
     analyze(recv) {
-        // is telemetly alive
+        // is telemetry alive
         setTimeout(function () {
-            SystemStatus.changeStatus('status-telemetly', SystemStatus.Type.Red);
+            SystemStatus.changeStatus('status-telemetry', SystemStatus.Type.Red);
         }, 5000);
 
         // ignore irregular data
@@ -97,7 +97,7 @@ var Telemetly = {
         }
 
         clearTimeout();
-        SystemStatus.changeStatus('status-telemetly', SystemStatus.Type.Green);
+        SystemStatus.changeStatus('status-telemetry', SystemStatus.Type.Green);
 
         recv = recv.slice(Setting.receiverHeaderSize);
 
@@ -145,4 +145,4 @@ var Telemetly = {
     }
 }
 
-module.exports = Telemetly;
+module.exports = Telemetry;
