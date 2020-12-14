@@ -2,10 +2,10 @@ window.$ = window.jQuery = require('jquery');
 
 const SerialPort = require('serialport');
 
-const AnalyzeTelemetly = require('../src/telemetly-protocol');
-const Setting = require('../src/setting');
-const CUI = require('../src/cui');
-const SystemStatus = require('../src/system-status');
+const AnalyzeTelemetly = require('../module/telemetly-protocol');
+const Setting = require('../module/setting');
+const CUI = require('../module/cui');
+const SystemStatus = require('../module/system-status');
 
 
 class Module {

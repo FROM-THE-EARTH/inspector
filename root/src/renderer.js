@@ -1,7 +1,7 @@
 window.$ = window.jQuery = require('jquery');
 
-const Telemetly = require('./src/wireless-module');
-const Setting = require('./src/setting');
+const Telemetly = require('./src/module/wireless-module');
+const Setting = require('./src/module/setting');
 
 
 class Renderer{
