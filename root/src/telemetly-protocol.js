@@ -1,10 +1,8 @@
 window.$ = window.jQuery = require('jquery');
 
 const CUI = require('../src/cui');
-const cui = new CUI();
 
 const SystemStatus = require('../src/system-status');
-const sysstat = new SystemStatus();
 
 class Sequence {
     constructor(text) {
@@ -16,7 +14,7 @@ const Sequences = [
     new Sequence('Waiting'),
     new Sequence('Waiting Launch'),
     new Sequence('In Flight'),
-    new Sequence('WaitLandinging')
+    new Sequence('Landing')
 ];
 
 function getDatas(res) {
@@ -60,29 +58,29 @@ function analyzeFormatK(res) {
     $('#time-value').text(parseFloat(datas[0]).toFixed(2) + 's');
     const abs = parseFloat(datas[1]).toFixed(2);
     $('#accel-abs-value').text(abs + 'G');
-    cui.addText(cui.TextType.Event, 'Launch: ' + abs + 'G');
+    CUI.addText(CUI.TextType.Event, 'Launch: ' + abs + 'G');
 }
 
 function analyzeFormatL(res) {
     const datas = getDatas(res);//time
     $('#time-value').text(parseFloat(datas[0]).toFixed(2) + 's');
-    cui.addText(cui.TextType.Event, 'Open Parachute');
+    CUI.addText(CUI.TextType.Event, 'Open Parachute');
 }
 
 function analyzeFormatM(res) {
     const datas = getDatas(res);//time
     $('#time-value').text(parseFloat(datas[0]).toFixed(2) + 's');
-    cui.addText(cui.TextType.Event, 'Detach');
+    CUI.addText(CUI.TextType.Event, 'Detach');
 }
 
 function analyzeFormatZ(res) {
     const datas = getDatas(res);//message
-    cui.addText(cui.TextType.Message, datas[0]);
+    CUI.addText(CUI.TextType.Message, datas[0]);
 }
 
 module.exports = function (res) {
     setTimeout(function () {
-        sysstat.changeStatus('status-telemetly', sysstat.Type.Red);
+        SystemStatus.changeStatus('status-telemetly', SystemStatus.Type.Red);
     }, 5000);
 
     if (res.length < 4
@@ -91,7 +89,7 @@ module.exports = function (res) {
         return;
     }
 
-    sysstat.changeStatus('status-telemetly', sysstat.Type.Green);
+    SystemStatus.changeStatus('status-telemetly', SystemStatus.Type.Green);
     clearTimeout();
 
     const header = res[0];
@@ -131,7 +129,7 @@ module.exports = function (res) {
             analyzeFormatZ(res);
             break;
         default:
-            cui.addText(cui.TextType.Info, 'Received unknown header');
+            CUI.addText(CUI.TextType.Info, 'Received unknown header');
             break;
     }
 }

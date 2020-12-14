@@ -1,4 +1,4 @@
-module.exports = class{
+class CUI{
     TextType = {
         From: 'From',
         To: 'To',
@@ -16,3 +16,9 @@ module.exports = class{
 $('#cui-clear-text-button').on('click', function(){
     $('#cui-text-area').empty();
 });
+
+$('#cui-text-area').on('click', e => {
+    $('#cui-input').focus();
+});
+
+module.exports = new CUI();

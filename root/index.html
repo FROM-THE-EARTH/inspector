@@ -11,15 +11,38 @@
 <html>
 
 <body>
-  <div class="wrap">
-    <div class="tile info">
-      <div class="tile-top">
+  <div class="menu">
+    <div class="menu-left">
+      <button class="menu-button menu-file">File</button>
+      <div class="menu-inner-content menu-file" id="menu-file-inner">
+        <button class="menu-inner-button" id="menu-open-setting-file">Open Setting File</button>
+        <button class="menu-inner-button" id="menu-reload-setting">Reload Setting</button>
       </div>
-      <div class="tile-content">
-        <p id="rocket-name">Rocket name サンプル</p>
+    </div>
+    <div class="menu-left">
+      <button class="menu-button menu-dev">Developper</button>
+      <div class="menu-inner-content menu-dev" id="menu-dev-inner">
+        <button class="menu-inner-button" id="menu-open-devtools">Open DevTools</button>
+      </div>
+    </div>
+    <div class="menu-left">
+      <button class="menu-button menu-help">Help</button>
+      <div class="menu-inner-content menu-help" id="menu-help-inner">
+        <button class="menu-inner-button" id="menu-open-website">Open Website</button>
       </div>
     </div>
 
+    <div class="menu-middle">
+    </div>
+
+    <div class="menu-right">
+      <button class="menu-button menu-icon" id="menu-min-window">―</button>
+      <button class="menu-button menu-icon" id="menu-max-window">⃞</button>
+      <button class="menu-button menu-icon" id="menu-close-window">✕</button>
+    </div>
+  </div>
+
+  <div class="wrap">
     <div class="tile system">
       <div class="tile-top">
         <label class="tile-title">
@@ -218,7 +241,8 @@
     </div>
   </div>
 
-  <script src="./src/wireless-module.js"></script>
+  <script src="./src/renderer.js"></script>
+  <script src="./src/menubar.js"></script>
 
 </body>
 

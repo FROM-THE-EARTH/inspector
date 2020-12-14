@@ -26,7 +26,7 @@ class SettingProp {
     }
 }
 
-module.exports = class{
+class Setting{
     transmitterHeader = new SettingProp("telemetly.transmitter.header", "txda ");
     receiverHeader = new SettingProp("telemetly.receiver.header", "");
 
@@ -44,3 +44,5 @@ module.exports = class{
         store.openInEditor();
     }
 }
+
+module.exports = new Setting();

@@ -2,16 +2,10 @@ window.$ = window.jQuery = require('jquery');
 
 const SerialPort = require('serialport');
 
-var AnalyzeTelemetly = require('./src/telemetly-protocol');
-
-const Setting = require('./src/setting');
-const setting = new Setting();
-
-const CUI = require('./src/cui.js');
-const cui = new CUI();
-
-const SystemStatus = require('./src/system-status');
-const sysstat = new SystemStatus();
+const AnalyzeTelemetly = require('../src/telemetly-protocol');
+const Setting = require('../src/setting');
+const CUI = require('../src/cui');
+const SystemStatus = require('../src/system-status');
 
 
 class Module {
@@ -25,6 +19,7 @@ class Module {
   }
 }
 
+
 var transmitter = new Module('Transmitter');
 var receiver = new Module('Receiver');
 var useOneModule = false;
@@ -32,9 +27,25 @@ var latest_selected_module = null;
 
 
 function onReceiveData(res) {
-  cui.addText(cui.TextType.From, res);
+  CUI.addText(CUI.TextType.From, res);
   AnalyzeTelemetly(res);
   $('#cui-text-area').scrollTop($('#cui-text-area')[0].scrollHeight);
+}
+
+function onTransmitCommand(e) {
+  if (e.which == 13) {
+    const text = $('#cui-input').val();
+    if (text === '') {
+      return;
+    }
+    if (transmitter.connected === false) {
+      CUI.addText(CUI.TextType.Error, 'Transmitter is not connected');
+      return;
+    }
+    transmitter.serialPort.write(Setting.transmitterHeader.value + text);
+    CUI.addText(CUI.TextType.To, Setting.transmitterHeader.value + text);
+    $('#cui-input').val("");
+  }
 }
 
 function updateSerialPorts(module) {
@@ -68,8 +79,8 @@ function onSelectorChanged(module) {
       }
       module.connected = false;
       useOneModule = false;
-      cui.addText(cui.TextType.Info, module.name + '  disconnected');
-      sysstat.changeStatus('status-' + module.name.toLowerCase(), sysstat.Type.Red);
+      CUI.addText(CUI.TextType.Info, module.name + '  disconnected');
+      SystemStatus.changeStatus('status-' + module.name.toLowerCase(), SystemStatus.Type.Red);
       return;
     }
 
@@ -77,7 +88,7 @@ function onSelectorChanged(module) {
     if (transmitter.port === receiver.port) {
       module.serialPort = module === transmitter ? receiver.serialPort : transmitter.serialPort;
       useOneModule = true;
-      cui.addText(cui.TextType.Info, 'Using same module for transmitter & receiver');
+      CUI.addText(CUI.TextType.Info, 'Using same module for transmitter & receiver');
     } else {
       module.serialPort = new SerialPort(module.port, {
         baudRate: 9600,
@@ -100,46 +111,17 @@ function onSelectorChanged(module) {
       }
 
       module.connected = true;
-      cui.addText(cui.TextType.Info, module.name + ' connected');
-      sysstat.changeStatus('status-' + module.name.toLowerCase(), sysstat.Type.Green);
+      CUI.addText(CUI.TextType.Info, module.name + ' connected');
+      SystemStatus.changeStatus('status-' + module.name.toLowerCase(), SystemStatus.Type.Green);
     }, 250);
   });
 }
 
-$(function () {
-  updateSerialPorts(transmitter);
-  updateSerialPorts(receiver);
-
-  onSelectorChanged(transmitter);
-  onSelectorChanged(receiver);
-
-  $('#port-update-button').on('click', function () {
-    updateSerialPorts(transmitter);
-    updateSerialPorts(receiver);
-  });
-
-  // send command
-  $('#cui-input').on('keydown', function (e) {
-    if (e.which == 13) {
-      const text = $('#cui-input').val();
-      if (text === '') {
-        return;
-      }
-      if (transmitter.connected === false) {
-        cui.addText(cui.TextType.Error, 'Transmitter is not connected');
-        return;
-      }
-      transmitter.serialPort.write(setting.transmitterHeader.value + text);
-      cui.addText(cui.TextType.To, setting.transmitterHeader.value + text);
-      $('#cui-input').val("");
-    }
-  });
-});
 
 // if COM access denied
 function onCOMAccessDenied(module) {
   if (latest_selected_module === module) {
-    cui.addText(cui.TextType.Error, module.port + ' access denied');
+    CUI.addText(CUI.TextType.Error, module.port + ' access denied');
     latest_selected_module = null;
     module.error = true;
     module.port = 'Select Port';
@@ -150,3 +132,29 @@ window.addEventListener("unhandledrejection", function (event) {
   onCOMAccessDenied(transmitter);
   onCOMAccessDenied(receiver);
 });
+
+
+class Telemetly {
+  constructor() {
+    updateSerialPorts(transmitter);
+    updateSerialPorts(receiver);
+
+    onSelectorChanged(transmitter);
+    onSelectorChanged(receiver);
+
+    $('#port-update-button').on('click', function () {
+      updateSerialPorts(transmitter);
+      updateSerialPorts(receiver);
+    });
+
+    this.updateTransmitterHeader();
+  }
+
+  updateTransmitterHeader() {
+    $('#cui-input').off('keydown', onTransmitCommand);
+    $('#cui-input').on('keydown', onTransmitCommand);
+  }
+
+};
+
+module.exports = new Telemetly();

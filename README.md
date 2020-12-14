@@ -6,7 +6,7 @@
 # Download Installer
   |Platform|Link|Version|Date|
   |:----:|:----:|:----:|:----:|
-  |Windows10|[Download](https://github.com/FROM-THE-EARTH/inspector/raw/main/release/inspector-installer-win.exe)|0.1.0|2020/12/12|
+  |Windows10|[Download](https://github.com/FROM-THE-EARTH/inspector/raw/main/release/inspector-installer-win.exe)|0.1.1|2020/12/14|
   |macOS|N/A|N/A|N/A|
   |Linux|N/A|N/A|N/A|
 
@@ -36,3 +36,11 @@
   **Linux**
   ```
   ```
+
+# Releases
+## 0.1.1
+  - 送信時にヘッダを追加する機能を追加
+  - UIを整理
+
+## 0.1.0
+  - Release beta version

@@ -1,4 +1,4 @@
-module.exports = class {
+class SystemStatus{
   Type = {
     Green: 1,
     Red: 2
@@ -19,3 +19,5 @@ module.exports = class {
   }
 
 }
+
+module.exports = new SystemStatus();
