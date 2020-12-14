@@ -3,6 +3,8 @@ window.$ = window.jQuery = require('jquery');
 const CUI = require('./cui');
 const SystemStatus = require('./system-status');
 const Setting = require('./setting');
+const Viewer = require('./viewer');
+
 
 class Sequence {
     constructor(text) {
@@ -37,6 +39,8 @@ function analyzeFormatA(datas) {
     $('#gyro-value').text(formatVector(datas[4], datas[5], datas[6]) + 'dps');
     const abs = Math.sqrt(datas[1] * datas[1] + datas[2] * datas[2] + datas[3] * datas[3]);
     $('#accel-abs-value').text(abs.toFixed(2) + 'G');
+
+    //Viewer.rotateDeg();
 }
 
 function analyzeFormatB(datas) {
