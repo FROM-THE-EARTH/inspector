@@ -1,8 +1,8 @@
-class SystemStatus{
-  Type = {
+var SystemStatus = {
+  Type: {
     Green: 1,
     Red: 2
-  };
+  },
 
   changeStatus(id, type) {
     id = '#' + id;
@@ -20,4 +20,4 @@ class SystemStatus{
 
 }
 
-module.exports = new SystemStatus();
+module.exports = SystemStatus;

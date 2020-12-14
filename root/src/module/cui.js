@@ -1,11 +1,11 @@
-class CUI{
-    TextType = {
+var CUI = {
+    TextType: {
         From: 'From',
         To: 'To',
         Info: 'Info',
         Event: 'Event',
         Message: 'Msg'
-    };
+    },
 
     addText(texttype, text) {
         const t = '<p class="cui-text">' + texttype + ': ' + text + '</p>';
@@ -22,4 +22,4 @@ $('#cui-text-area').on('click', e => {
     $('#cui-input').focus();
 });
 
-module.exports = new CUI();
+module.exports = CUI;

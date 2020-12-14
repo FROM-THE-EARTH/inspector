@@ -1,16 +1,17 @@
 window.$ = window.jQuery = require('jquery');
 
-const Telemetly = require('./src/module/wireless-module');
+const WirelessModule = require('./src/module/wireless-module');
 const Setting = require('./src/module/setting');
 
 
 class Renderer{
     constructor(){
+        WirelessModule.initialize();
     }
 
     reloadSetting(){
         Setting.reload();
-        Telemetly.updateTransmitterHeader();
+        WirelessModule.updateTransmitterHeader();
     }
 };
 

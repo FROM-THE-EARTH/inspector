@@ -2,7 +2,7 @@ window.$ = window.jQuery = require('jquery');
 
 const SerialPort = require('serialport');
 
-const AnalyzeTelemetly = require('./telemetly-protocol');
+const TeleProtocol = require('./telemetly-protocol');
 const Setting = require('./setting');
 const CUI = require('./cui');
 const SystemStatus = require('./system-status');
@@ -28,7 +28,7 @@ var latest_selected_module = null;
 
 function onReceiveData(res) {
   CUI.addText(CUI.TextType.From, res);
-  AnalyzeTelemetly(res);
+  TeleProtocol.analyze(res);
 }
 
 function onTransmitCommand(e) {
@@ -133,8 +133,8 @@ window.addEventListener("unhandledrejection", function (event) {
 });
 
 
-class Telemetly {
-  constructor() {
+var WirelessModule = {
+  initialize(){
     updateSerialPorts(transmitter);
     updateSerialPorts(receiver);
 
@@ -147,7 +147,7 @@ class Telemetly {
     });
 
     this.updateTransmitterHeader();
-  }
+  },
 
   updateTransmitterHeader() {
     $('#cui-input').off('keydown', onTransmitCommand);
@@ -156,4 +156,4 @@ class Telemetly {
 
 };
 
-module.exports = new Telemetly();
+module.exports = WirelessModule;

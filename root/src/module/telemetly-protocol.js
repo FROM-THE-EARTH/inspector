@@ -82,63 +82,67 @@ function analyzeFormatZ(datas) {
     CUI.addText(CUI.TextType.Message, datas[0]);
 }
 
-module.exports = function (recv) {
-    // is telemetly alive
-    setTimeout(function () {
-        SystemStatus.changeStatus('status-telemetly', SystemStatus.Type.Red);
-    }, 5000);
+var Telemetly = {
+    analyze(recv) {
+        // is telemetly alive
+        setTimeout(function () {
+            SystemStatus.changeStatus('status-telemetly', SystemStatus.Type.Red);
+        }, 5000);
 
-    // ignore irregular data
-    if (recv.length < 4
-        || recv[2] !== ':'
-        || recv[recv.length - 1] !== ';') {
-        return;
-    }
-
-    clearTimeout();
-    SystemStatus.changeStatus('status-telemetly', SystemStatus.Type.Green);
-
-    recv = recv.slice(Setting.receiverHeaderSize);
-
-    const header = recv[0];
-    const sequence = recv[1];
-
-    $.each(Sequences, function (index, value) {
-        if (sequence == index) {
-            $('#sequence-value').text(value.text);
-            return false;
+        // ignore irregular data
+        if (recv.length < 4
+            || recv[2] !== ':'
+            || recv[recv.length - 1] !== ';') {
+            return;
         }
-        if (index === Sequences.length - 1) {
-            $('#sequence-value').text('Unknown');
+
+        clearTimeout();
+        SystemStatus.changeStatus('status-telemetly', SystemStatus.Type.Green);
+
+        recv = recv.slice(Setting.receiverHeaderSize);
+
+        const header = recv[0];
+        const sequence = recv[1];
+
+        $.each(Sequences, function (index, value) {
+            if (sequence == index) {
+                $('#sequence-value').text(value.text);
+                return false;
+            }
+            if (index === Sequences.length - 1) {
+                $('#sequence-value').text('Unknown');
+            }
+        });
+
+        const datas = parseDatas(recv);
+
+        switch (header) {
+            case 'A':
+                analyzeFormatA(datas);
+                break;
+            case 'B':
+                analyzeFormatB(datas);
+                break;
+            case 'C':
+                analyzeFormatC(datas);
+                break;
+            case 'K':
+                analyzeFormatK(datas);
+                break;
+            case 'L':
+                analyzeFormatL(datas);
+                break;
+            case 'M':
+                analyzeFormatM(datas);
+                break;
+            case 'Z':
+                analyzeFormatZ(datas);
+                break;
+            default:
+                CUI.addText(CUI.TextType.Info, 'Received unknown header');
+                break;
         }
-    });
-
-    const datas = parseDatas(recv);
-
-    switch (header) {
-        case 'A':
-            analyzeFormatA(datas);
-            break;
-        case 'B':
-            analyzeFormatB(datas);
-            break;
-        case 'C':
-            analyzeFormatC(datas);
-            break;
-        case 'K':
-            analyzeFormatK(datas);
-            break;
-        case 'L':
-            analyzeFormatL(datas);
-            break;
-        case 'M':
-            analyzeFormatM(datas);
-            break;
-        case 'Z':
-            analyzeFormatZ(datas);
-            break;
-        default:
-            CUI.addText(CUI.TextType.Info, 'Received unknown header');
-            break;
     }
 }
+
+module.exports = Telemetly;
