@@ -28,16 +28,16 @@ class SettingProp {
 
 class Setting{
     transmitterHeader = new SettingProp("telemetly.transmitter.header", "txda ");
-    receiverHeader = new SettingProp("telemetly.receiver.header", "");
+    receiverHeaderSize = new SettingProp("telemetly.receiver.header_size", 0);
 
     constructor() {
         this.transmitterHeader.save();
-        this.receiverHeader.save();
+        this.receiverHeaderSize.save();
     }
 
     reload(){
         this.transmitterHeader.read();
-        this.receiverHeader.read();
+        this.receiverHeaderSize.read();
     }
 
     openSettingFile() {
