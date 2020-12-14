@@ -100,8 +100,7 @@ body{
 
 
 .tile{
-    border: 2px solid rgb(197, 197, 197);
-    margin: 0.4vh;
+    border: 1px solid rgb(20, 34, 73);
     display: flex;
     flex-direction: column;
 }
@@ -113,9 +112,10 @@ body{
 }
 
 .tile-title{
+    display: inline-block;
     font-size: 120%;
-    padding-left: 1vh;
-    padding-right: 1vh;
+    width: 100px;
+    text-align: center;
     background-color: rgb(201, 205, 255);
 }
 
@@ -165,11 +165,17 @@ body{
     margin:0;
     padding: 0;
     text-align: center;
+    position: relative;
 }
 
 .smalltile-title{
-    font-size: 2.0vh;
-    font-weight: bold;
+    font-family: '游ゴシック';
+    font-size: 2.2vh;
+    font-weight:500;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
 }
 
 .smalltile-content{
@@ -180,43 +186,49 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-bottom: 2.0vh;
 }
 
 .viewer{
-    grid-column-start: 1; 
-    grid-column-end: 6; 
+    grid-column-start: 6; 
+    grid-column-end: 12; 
     grid-row-start: 1; 
-    grid-row-end: 13; 
+    grid-row-end: 10; 
 }
 
 .system{
-    grid-column-start: 6; 
-    grid-column-end: 12; 
+    grid-column-start: 1; 
+    grid-column-end: 6; 
     grid-row-start: 1; 
     grid-row-end: 5; 
 }
 
 .setting{
-    grid-column-start: 6; 
-    grid-column-end: 12; 
+    grid-column-start: 1; 
+    grid-column-end: 6; 
     grid-row-start: 5; 
-    grid-row-end: 13;
+    grid-row-end: 10;
 }
 
 .cui{
     grid-column-start: 12; 
     grid-column-end: 22; 
     grid-row-start: 1; 
-    grid-row-end: 13;
+    grid-row-end: 10;
     min-width: 300px;
 }
 
 .status{
     grid-column-start: 1; 
     grid-column-end: 22; 
-    grid-row-start: 13; 
+    grid-row-start: 17; 
     grid-row-end: 21;
+}
+
+.chart{
+    grid-column-start: 1; 
+    grid-column-end: 22; 
+    grid-row-start: 10; 
+    grid-row-end: 17;
 }
 
 
@@ -230,7 +242,7 @@ body{
 
 #rocketimg{
     transform: rotate(15deg);
-    height: 40vmin;
+    height: 35vmin;
 }
 
 
@@ -393,11 +405,12 @@ body{
 
 
 .status-value{
-    font-size: 3.0vmin;
+    font-size: 1.6vmin;
     font-family: '游ゴシック';
     padding:0;
     margin:0;
     text-align: center;
+    -webkit-user-select: text;
 }
 
 
