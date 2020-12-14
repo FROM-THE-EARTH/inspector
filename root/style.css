@@ -113,14 +113,14 @@ body{
 }
 
 .tile-title{
-    font-size: 2.5vh;
+    font-size: 120%;
     padding-left: 1vh;
     padding-right: 1vh;
     background-color: rgb(201, 205, 255);
 }
 
 .tile-top-button{
-    font-size: 2.0vh;
+    font-size: 120%;
     background-color: unset;
     border: none;
     outline: none;
@@ -143,7 +143,6 @@ body{
     background: linear-gradient(to bottom, rgb(201, 205, 255), #727ea8);
     flex: 1;
     position: relative;
-    height: 100%;
 }
 
 .tile-inner-wrap{
@@ -317,6 +316,16 @@ body{
     display: flex;
     bottom: 0;
     border-top: 1px solid black;
+}
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+::-webkit-scrollbar-track{
+    background: unset;
+}
+::-webkit-scrollbar-thumb{
+    background: #eff4ff;
 }
 
 #cui-input-arrow{
