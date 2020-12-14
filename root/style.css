@@ -116,7 +116,6 @@ body{
 .tile-title{
     color: rgb(230, 230, 230);
     float: left;
-    display: inline-block;
     font-size: 120%;
     width: 100px;
     text-align: center;
