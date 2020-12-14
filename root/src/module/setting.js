@@ -27,15 +27,18 @@ class SettingProp {
 }
 
 class Setting{
+    rocketInitialAngle = new SettingProp("rocket.initial_angle", 15);
     transmitterHeader = new SettingProp("telemetry.transmitter.header", "txda ");
     receiverHeaderSize = new SettingProp("telemetry.receiver.header_size", 0);
 
     constructor() {
+        this.rocketInitialAngle.save();
         this.transmitterHeader.save();
         this.receiverHeaderSize.save();
     }
 
     reload(){
+        this.rocketInitialAngle.read();
         this.transmitterHeader.read();
         this.receiverHeaderSize.read();
     }

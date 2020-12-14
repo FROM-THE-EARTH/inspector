@@ -2,6 +2,7 @@ window.$ = window.jQuery = require('jquery');
 
 const WirelessModule = require('./src/module/wireless-module');
 const Setting = require('./src/module/setting');
+const Viewer = require('./src/module/viewer');
 
 
 class Renderer{
@@ -12,6 +13,7 @@ class Renderer{
     reloadSetting(){
         Setting.reload();
         WirelessModule.updateTransmitterHeader();
+        Viewer.rotateDeg(Setting.rocketInitialAngle.value);
     }
 };
 
