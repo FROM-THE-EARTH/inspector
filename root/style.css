@@ -2,18 +2,18 @@ body{
     background-color: rgb(53, 53, 53);
     margin: 0;
     -webkit-user-select: none;
+    color: rgb(200, 200, 200);
 }
 
 
 .menu{
-    background-color: rgb(233, 233, 255);
+    background-color: #6b6b6b;
     height: 28px;
     width: 100%;
     display: flex;
 }
 
 .menu-left{
-    color: #5071e7;
     float: left;
     position: relative;
 }
@@ -37,6 +37,7 @@ body{
 }
 
 .menu-button{
+    color: rgb(200, 200, 200);
     padding-top: 2px;
     padding-bottom: 2px;
     padding-left: 9px;
@@ -63,11 +64,12 @@ body{
 .menu-inner-content{
     position: absolute;
     z-index: 1;
-    background-color: rgb(255, 255, 255);
+    background-color: #555555;
     display: none;
 }
 
 .menu-inner-button{
+    color: rgb(200, 200, 200);
     display: block;
     border: none;
     outline: none;
@@ -100,26 +102,29 @@ body{
 
 
 .tile{
-    border: 1px solid rgb(20, 34, 73);
+    border: 1px solid rgb(107, 107, 107);
     display: flex;
     flex-direction: column;
 }
 
 .tile-top{
-    background-color: #7890e6;
+    background-color: #464646;
     margin:0;
     padding: 0;
 }
 
 .tile-title{
+    color: rgb(230, 230, 230);
+    float: left;
     display: inline-block;
     font-size: 120%;
     width: 100px;
     text-align: center;
-    background-color: rgb(201, 205, 255);
+    background-color: #383838;
 }
 
 .tile-top-button{
+    color: rgb(200, 200, 200);
     font-size: 120%;
     background-color: unset;
     border: none;
@@ -130,17 +135,17 @@ body{
 }
 
 .tile-top-button:hover{
-    background-color: #5b79e4;
-    transition: 0.5s;
+    color: rgb(230, 230, 230);
+    background-color: #555555;
 }
 
 .tile-top-button:active{
-    background-color: #3c61e7;
-    transition: 0s;
+    color: rgb(230, 230, 230);
+    background-color: #858585;
 }
 
 .tile-content{
-    background: linear-gradient(to bottom, rgb(201, 205, 255), #727ea8);
+    background: #383838;
     flex: 1;
     position: relative;
 }
@@ -153,15 +158,13 @@ body{
 }
 
 .smalltile{
-    background: linear-gradient(to bottom, rgb(201, 205, 255), #727ea8);
-    border: 2px solid rgb(53, 53, 53);
+    border: 1px solid rgb(107, 107, 107);
     margin: 0.4vh;
     display: flex;
     flex-direction: column;
 }
 
 .smalltile-top{
-    background-color: rgb(201, 205, 255);
     margin:0;
     padding: 0;
     text-align: center;
@@ -169,6 +172,7 @@ body{
 }
 
 .smalltile-title{
+    color: rgb(230, 230, 230);
     font-family: '游ゴシック';
     font-size: 2.2vh;
     font-weight:500;
@@ -179,7 +183,6 @@ body{
 }
 
 .smalltile-content{
-    background: linear-gradient(to bottom, rgb(201, 205, 255), #727ea8);
     flex: 1;
     position: relative;
     height: 100%;
@@ -259,7 +262,6 @@ body{
     line-height: 3vh;
     font-size: 2.1vh;
     font-family: '游ゴシック';
-    font-weight: bold;
 }
 
 .setting-row label::after{
@@ -271,31 +273,13 @@ body{
 }
 
 .setting-selector{
+    color: rgb(200, 200, 200);
     line-height: 3vh;
     font-size: 2.1vh;
     font-family: '游ゴシック';
     border: none;
     outline: none;
     background-color: unset;
-}
-
-.setting-button{
-    line-height: 3vh;
-    font-size: 2.1vh;
-    font-family: '游ゴシック';
-    border: none;
-    border-bottom: 1px solid black;
-    outline: none;
-    background-color: unset;
-}
-
-.setting-button:hover{
-    background-color: #8a9ee7;
-    transition: 0.5s;
-}
-
-.setting-button:active{
-    background-color: #5071e7;
 }
 
 .setting-selector select{
@@ -303,12 +287,13 @@ body{
 }
 
 .setting-selector:focus{
-    background-color: #8a9ee7;
+    background-color: #555555;
+    color: rgb(230, 230, 230);
 }
 
 .setting-selector:hover{
-    background-color: #8a9ee7;
-    transition: 0.5s;
+    background-color: #555555;
+    color: rgb(230, 230, 230);
 }
 
 
@@ -327,7 +312,7 @@ body{
     position: absolute;
     display: flex;
     bottom: 0;
-    border-top: 1px solid black;
+    border-top: 1px solid rgb(107, 107, 107);
 }
 
 ::-webkit-scrollbar{
@@ -354,6 +339,7 @@ body{
 }
 
 #cui-input{
+    color: rgb(230, 230, 230);
     font-size: 2.2vh;
     font-family: '游ゴシック';
     position: absolute;
@@ -372,6 +358,7 @@ body{
 }
 
 .cui-text{
+    color: rgb(230, 230, 230);
     font-size: 1.8vh;
     font-family: '游ゴシック';
     margin:0;
@@ -393,6 +380,14 @@ body{
     font-family: '游ゴシック';
 }
 
+.systemstatus-green{
+    color: rgb(230, 230, 230);
+}
+
+.systemstatus-red{
+    color: rgb(150, 150, 150);
+}
+
 .systemstatus-green:before{
     content: "● ";
     color: greenyellow;
@@ -405,6 +400,7 @@ body{
 
 
 .status-value{
+    color: rgb(230, 230, 230);
     font-size: 1.6vmin;
     font-family: '游ゴシック';
     padding:0;
