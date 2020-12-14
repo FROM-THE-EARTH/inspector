@@ -322,7 +322,7 @@ body{
     background: unset;
 }
 ::-webkit-scrollbar-thumb{
-    background: #eff4ff;
+    background: rgb(107, 107, 107);
 }
 
 #cui-input-arrow{
@@ -363,6 +363,7 @@ body{
     font-family: '游ゴシック';
     margin:0;
     padding: 0;
+    margin-left: 7px;
     word-wrap: break-word;
 }
 
