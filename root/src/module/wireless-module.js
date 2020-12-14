@@ -29,7 +29,6 @@ var latest_selected_module = null;
 function onReceiveData(res) {
   CUI.addText(CUI.TextType.From, res);
   AnalyzeTelemetly(res);
-  $('#cui-text-area').scrollTop($('#cui-text-area')[0].scrollHeight);
 }
 
 function onTransmitCommand(e) {

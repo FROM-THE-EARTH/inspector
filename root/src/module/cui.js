@@ -10,6 +10,7 @@ class CUI{
     addText(texttype, text) {
         const t = '<p class="cui-text">' + texttype + ': ' + text + '</p>';
         $('#cui-text-area').append(t);
+        $('#cui-text-area').scrollTop($('#cui-text-area')[0].scrollHeight);
     }
 }
 
