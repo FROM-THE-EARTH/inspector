@@ -9,6 +9,8 @@ app.on('ready', () => {
     frame: false,
     width: 1280,
     height: 720,
+    minWidth: 800,
+    minHeight: 720,
     icon: 'file://' + __dirname + '/icon/icon.ico',
     webPreferences: {
       nodeIntegration: true,
