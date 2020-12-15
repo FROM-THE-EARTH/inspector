@@ -5,10 +5,12 @@
 
 # Downloads
   |Platform|Link|Version|Date|
-  |:----:|:----:|:----:|:----:|
+  |:------:|:--:|:-----:|:--:|
   |Windows|[Download](https://github.com/FROM-THE-EARTH/inspector/raw/main/release/inspector-installer-win.exe)|0.2.0|2020/12/15|
   | macOS |[Download](https://github.com/FROM-THE-EARTH/inspector/raw/main/release/inspector-installer-mac.dmg)|0.2.0|2020/12/15|
   | Linux |N/A|N/A|N/A|
+
+  - Only available on 64bit architecture
 
   >macOSの場合、開発者登録をしていないため普通に実行するとブロックされてしまいます。macOSで実行する際は、初回のみアプリアイコンを右クリックしメニューから開くを押して実行する必要があります。
 
