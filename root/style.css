@@ -164,19 +164,16 @@ body{
 }
 
 .smalltile-top{
+    display: block;
     margin:0;
     padding: 0;
-    display: block;
+    margin-left: 8px;
 }
 
 .smalltile-title{
     color: rgb(230, 230, 230);
     font-family: '游ゴシック';
-    font-size: 2.2vh;
-    font-weight:500;
-    margin: 0;
-    top: 0;
-    left: 0;
+    font-size: 2.0vh;
 }
 
 .smalltile-content{
