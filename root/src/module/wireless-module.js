@@ -62,7 +62,7 @@ function updateSerialPorts(module) {
   });
 }
 
-function onSelectorChanged(module) {
+function setOnSelectorChanged(module) {
   $(module.selector_id).on('change', function () {
     module.error = false;
     module.port = $(module.selector_id + ' option:selected').val();
@@ -134,26 +134,24 @@ window.addEventListener("unhandledrejection", function (event) {
 
 
 var WirelessModule = {
-  initialize(){
+  updatePorts(){
     updateSerialPorts(transmitter);
     updateSerialPorts(receiver);
-
-    onSelectorChanged(transmitter);
-    onSelectorChanged(receiver);
-
-    $('#port-update-button').on('click', function () {
-      updateSerialPorts(transmitter);
-      updateSerialPorts(receiver);
-    });
-
-    this.updateTransmitterHeader();
   },
 
   updateTransmitterHeader() {
     $('#cui-input').off('keydown', onTransmitCommand);
     $('#cui-input').on('keydown', onTransmitCommand);
-  }
+  },
 
+  initialize(){
+    this.updatePorts();
+
+    setOnSelectorChanged(transmitter);
+    setOnSelectorChanged(receiver);
+
+    this.updateTransmitterHeader();
+  }
 };
 
 module.exports = WirelessModule;

@@ -19,6 +19,7 @@ class Renderer{
 
 const renderer = new Renderer();
 
-$('#cui-clear-text-button').on('click', function(){
+$('#reload-button').on('click', function () {
     renderer.reloadSetting();
+  WirelessModule.updatePorts();
 });
