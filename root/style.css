@@ -151,7 +151,7 @@ body{
 
 .tile-inner-wrap{
     display: grid;
-    grid-auto-columns: auto;
+    grid-auto-columns: 1fr;
     grid-template-rows: auto;
     height: 100%;
 }
@@ -166,8 +166,7 @@ body{
 .smalltile-top{
     margin:0;
     padding: 0;
-    text-align: center;
-    position: relative;
+    display: block;
 }
 
 .smalltile-title{
@@ -175,19 +174,16 @@ body{
     font-family: '游ゴシック';
     font-size: 2.2vh;
     font-weight:500;
-    position: absolute;
+    margin: 0;
     top: 0;
     left: 0;
-    z-index: 1;
 }
 
 .smalltile-content{
-    flex: 1;
-    position: relative;
-    height: 100%;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    flex: 1;
 }
 
 .viewer{
@@ -414,7 +410,7 @@ body{
     grid-column-start: 1; 
     grid-column-end: 2; 
     grid-row-start: 1; 
-    grid-row-end: 3;
+    grid-row-end: 2;
 }
 
 .status-time{
@@ -425,22 +421,22 @@ body{
 }
 
 .status-height{
-    grid-column-start: 2; 
-    grid-column-end: 3; 
-    grid-row-start: 2; 
-    grid-row-end: 3;
-}
-
-.status-temperature{
     grid-column-start: 3; 
     grid-column-end: 4; 
     grid-row-start: 1; 
     grid-row-end: 2;
 }
 
+.status-temperature{
+    grid-column-start: 1; 
+    grid-column-end: 2; 
+    grid-row-start: 2; 
+    grid-row-end: 3;
+}
+
 .status-pressure{
-    grid-column-start: 3; 
-    grid-column-end: 4; 
+    grid-column-start: 2; 
+    grid-column-end: 3; 
     grid-row-start: 2; 
     grid-row-end: 3;
 }
@@ -449,12 +445,12 @@ body{
     grid-column-start: 4; 
     grid-column-end: 5; 
     grid-row-start: 1; 
-    grid-row-end: 2;
+    grid-row-end: 3;
 }
 
 .status-gyro{
-    grid-column-start: 4; 
-    grid-column-end: 5; 
+    grid-column-start: 3; 
+    grid-column-end: 4; 
     grid-row-start: 2; 
     grid-row-end: 3;
 }
