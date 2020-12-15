@@ -1,8 +1,14 @@
+## mac
+.DS_Store
+
 ## node.js
 node_modules/
 
 ## Installer
 win-unpacked/
+mac/
 builder-effective-config.yaml
 latest.yml
+latest-mac.yml
 inspector-installer-win.exe.blockmap
+inspector-installer-mac.dmg.blockmap

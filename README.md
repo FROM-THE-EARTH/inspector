@@ -7,7 +7,7 @@
   |Platform|Link|Version|Date|
   |:----:|:----:|:----:|:----:|
   |Windows10|[Download](https://github.com/FROM-THE-EARTH/inspector/raw/main/release/inspector-installer-win.exe)|0.1.1|2020/12/14|
-  |macOS|N/A|N/A|N/A|
+  |macOS|[Download](https://github.com/FROM-THE-EARTH/inspector/raw/main/release/inspector-installer-mac.dmg)|0.2.0|2020/12/15|
   |Linux|N/A|N/A|N/A|
 
 # Develop
@@ -32,12 +32,18 @@
   ```
   **macOS**
   ```
+  npm run pac:mac
   ```
   **Linux**
   ```
   ```
 
 # Releases
+## 0.2.0
+  - macOSに対応
+  - UIをダークテーマに
+  - ウィンドウの最小サイズを800x720に設定
+
 ## 0.1.1
   - 送信時にヘッダを追加する機能を追加
   - UIを整理

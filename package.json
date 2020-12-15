@@ -1,6 +1,6 @@
 {
     "name": "inspector",
-    "version": "0.1.1",
+    "version": "0.2.0",
     "author": {
         "name": "FROM THE EARTH"
     },
@@ -10,7 +10,8 @@
     "scripts": {
         "start": "electron .",
         "rebuild": "electron-rebuild -f -w serialport",
-        "pac:win": "npx electron-builder --win --x64"
+        "pac:win": "npx electron-builder --win --x64",
+        "pac:mac": "npx electron-builder --mac --x64"
     },
     "dependencies": {
         "electron-store": "^6.0.1",
