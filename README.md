@@ -3,20 +3,17 @@
   受信したデータの解析、コマンドの送信をこのアプリケーションで行うことが出来ます。<br>
   テレメトリは[仕様書](https://github.com/FROM-THE-EARTH/document/blob/main/%E3%83%86%E3%83%AC%E3%83%A1%E3%83%88%E3%83%AA%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E4%BB%95%E6%A7%98%E6%9B%B8.pdf)に沿って行われることを前提としています。
 
-# Download Installer
+# Downloads
   |Platform|Link|Version|Date|
   |:----:|:----:|:----:|:----:|
   |Windows10|[Download](https://github.com/FROM-THE-EARTH/inspector/raw/main/release/inspector-installer-win.exe)|0.2.0|2020/12/15|
-  |macOS|[Download](https://github.com/FROM-THE-EARTH/inspector/raw/main/release/inspector-installer-mac.dmg)|0.2.0|2020/12/15|
-  |Linux|N/A|N/A|N/A|
+  |  macOS  |[Download](https://github.com/FROM-THE-EARTH/inspector/raw/main/release/inspector-installer-mac.dmg)|0.2.0|2020/12/15|
+  |  Linux  |N/A|N/A|N/A|
 
-  ```
-  macOSの場合、開発者登録をしていないため普通に実行するとブロックされてしまいます。
-  macOSで実行する際は、初回のみアプリアイコンを右クリックしメニューから開くを押して実行する必要があります。
-  ```
+  >macOSの場合、開発者登録をしていないため普通に実行するとブロックされてしまいます。macOSで実行する際は、初回のみアプリアイコンを右クリックしメニューから開くを押して実行する必要があります。
 
-# Develop
-## Build
+# Development
+## Building
   - **Install Node.js** (Using v14.15.1)
   ```
   git clone https://github.com/FROM-THE-EARTH/inspector.git
@@ -25,7 +22,7 @@
   npm run rebuild
   ```
 
-## Run
+## Running
   ```
   npm run start
   ```
@@ -42,6 +39,10 @@
   **Linux**
   ```
   ```
+
+## Troubleshooting
+  - node_modules/を削除し、再度buildする
+  - Windowsの場合、管理者権限のPowerShellで```npm install --global windows-build-tools```を実行する
 
 # Releases
 ## 0.2.0
