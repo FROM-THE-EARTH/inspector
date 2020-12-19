@@ -20,7 +20,7 @@ const Sequences = [
 ];
 
 function parseDatas(recv) {
-    recv = recv.slice(0, -1);
+    recv = recv.slice(0, -1);//remove ";"
     const datas = recv.split(':')[1];
     return datas.split(',');
 }

@@ -26,10 +26,19 @@ var receiver = new Module('Receiver');
 var useOneModule = false;
 var latest_selected_module = null;
 
+var uint8Decoder = new TextDecoder;
+var receivedData = "";
 
 function onReceiveData(res) {
-  CUI.addText(CUI.TextType.From, res);
-  TeleProtocol.analyze(res);
+  for (var i = 0; i < res.length; i++) {
+    var c = uint8Decoder.decode(Uint8Array.of(res[i]))[0];
+    receivedData += c;
+    if (c == ';') {//end of data
+      CUI.addText(CUI.TextType.From, receivedData);
+      TeleProtocol.analyze(receivedData);
+      receivedData = "";
+    }
+  }
 }
 
 function onTransmitCommand(e) {
@@ -85,8 +94,8 @@ function setOnSelectorChanged(module) {
     }
 
     // connected
-    var baudrate =  parseInt($(module.baudrate_id + ' option:selected').val());
-    if(!Number.isInteger(baudrate)){
+    var baudrate = parseInt($(module.baudrate_id + ' option:selected').val());
+    if (!Number.isInteger(baudrate)) {
       CUI.addText(CUI.TextType.Info, 'Select baudrate');
       module.port = 'Select Port';
       $(module.selector_id).val('Select Port');
@@ -142,7 +151,7 @@ window.addEventListener("unhandledrejection", function (event) {
 
 
 var WirelessModule = {
-  updatePorts(){
+  updatePorts() {
     updateSerialPorts(transmitter);
     updateSerialPorts(receiver);
   },
@@ -152,7 +161,7 @@ var WirelessModule = {
     $('#cui-input').on('keydown', onTransmitCommand);
   },
 
-  initialize(){
+  initialize() {
     this.updatePorts();
 
     setOnSelectorChanged(transmitter);
