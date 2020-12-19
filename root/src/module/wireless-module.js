@@ -14,6 +14,7 @@ class Module {
     this.port = null;
     this.serialPort = null;
     this.selector_id = '#port-selector-' + name.toLowerCase();
+    this.baudrate_id = '#port-baudrate-' + name.toLowerCase();
     this.error = false;
     this.connected = false;
   }
@@ -41,7 +42,7 @@ function onTransmitCommand(e) {
       CUI.addText(CUI.TextType.Error, 'Transmitter is not connected');
       return;
     }
-    transmitter.serialPort.write(Setting.transmitterHeader.value + text);
+    transmitter.serialPort.write(Setting.transmitterHeader.value + text + '\r\n');
     CUI.addText(CUI.TextType.To, Setting.transmitterHeader.value + text);
     $('#cui-input').val("");
   }
@@ -84,13 +85,20 @@ function setOnSelectorChanged(module) {
     }
 
     // connected
+    var baudrate =  parseInt($(module.baudrate_id + ' option:selected').val());
+    if(!Number.isInteger(baudrate)){
+      CUI.addText(CUI.TextType.Info, 'Select baudrate');
+      module.port = 'Select Port';
+      $(module.selector_id).val('Select Port');
+      return;
+    }
     if (transmitter.port === receiver.port) {
       module.serialPort = module === transmitter ? receiver.serialPort : transmitter.serialPort;
       useOneModule = true;
       CUI.addText(CUI.TextType.Info, 'Using same module for transmitter & receiver');
     } else {
       module.serialPort = new SerialPort(module.port, {
-        baudRate: 9600,
+        baudRate: baudrate,
         parser: SerialPort.parsers.Readline,
       });
 

@@ -6,7 +6,7 @@
 # Downloads
   |Platform|Link|Version|Date|
   |:------:|:--:|:-----:|:--:|
-  |Windows|[Download](https://github.com/FROM-THE-EARTH/inspector/raw/main/release/inspector-installer-win.exe)|0.2.0|2020/12/15|
+  |Windows|[Download](https://github.com/FROM-THE-EARTH/inspector/raw/main/release/inspector-installer-win.exe)|0.2.1|2020/12/19|
   | macOS |[Download](https://github.com/FROM-THE-EARTH/inspector/raw/main/release/inspector-installer-mac.dmg)|0.2.0|2020/12/15|
   | Linux |N/A|N/A|N/A|
 
@@ -47,6 +47,10 @@
   - Windowsの場合、管理者権限のPowerShellで```npm install --global windows-build-tools```を実行する
 
 # Releases
+## 0.2.1
+  - baudrate設定機能の追加
+  - コマンド送信時、送信文字列の末尾に自動的に"\r\n"を追加するように修正
+
 ## 0.2.0
   - macOSに対応
   - UIをダークテーマに
