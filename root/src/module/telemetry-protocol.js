@@ -84,8 +84,10 @@ function analyzeFormatZ(datas) {
 
 var Telemetry = {
     analyze(recv) {
+        recv = recv.trim();
+
         // is telemetry alive
-        setTimeout(function () {
+        var timeoutID = setTimeout(function () {
             SystemStatus.changeStatus('status-telemetry', SystemStatus.Type.Red);
         }, 5000);
 
@@ -96,7 +98,7 @@ var Telemetry = {
             return;
         }
 
-        clearTimeout();
+        clearTimeout(timeoutID);
         SystemStatus.changeStatus('status-telemetry', SystemStatus.Type.Green);
 
         recv = recv.slice(Setting.receiverHeaderSize);

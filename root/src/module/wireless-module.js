@@ -34,7 +34,6 @@ function onReceiveData(res) {
     var c = uint8Decoder.decode(Uint8Array.of(res[i]))[0];
     receivedData += c;
     if (c == ';') {//end of data
-      CUI.addText(CUI.TextType.From, receivedData);
       TeleProtocol.analyze(receivedData);
       receivedData = "";
     }
